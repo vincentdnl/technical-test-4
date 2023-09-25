@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+
+@layer utilities {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@layer components {
+  .active-link {
+    @apply bg-[#0560FD] !text-[#FFFFFF] !fill-[white];
+  }
+  /* .myTable > table , th
+   {
+    @apply border border-[#E5EAEF];
+  } */
+
+  .active-link > span {
+    @apply !fill-[white];
+  }
+  /* signInInputs */
+  .signInInputs {
+    @apply bg-[transparent] outline-0	block w-full p-2.5 mb-1.5	rounded-[4px] border border-[#a7b0b7] text-[#252b2f] leading-tight focus:outline-none focus:border-[#116eee] focus:border;
+  }
+  /* auth Wrapper */
+  .authWrapper {
+    @apply m-[5rem] mx-auto max-w-[500px] pt-[40px] px-[30px] pb-[30px]  shadow-box rounded-[0.5rem] bg-[#fff] text-[#252b2f];
+  }
+  /* Container */
+  .appContainer {
+    @apply ml-auto mr-auto max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px] py-10 pl-16	pr-0;
+  }
+  /* SideBar Navs */
+  .sideBarNavs {
+    @apply mt-2 pl-[15px] h-8 flex w-[200px] gap-3 items-center  rounded-[10px] text-[#676D7C] text-base hover:text-[#676D7C];
+  }
+  /* Projects Inputs */
+  .projectsInput {
+    @apply border border-[#ced4da] rounded-[5px] w-full h-[40px] pr-2 mt-2 text-[1rem] pl-[0.725rem] focus:outline-none focus:ring focus:ring-[#80bdff];
+  }
+  /* Users Input */
+  .usersInput {
+    @apply border border-[black] rounded-[5px] w-full h-[40px] mt-[5px] focus:outline-none focus:ring focus:ring-[#80bdff];
+  }
+  /* Invoice Page Card and Payment Page Card */
+  .invoiceCard {
+    @apply shadow-[0_4px_8px_0px_rgba(0,0,0,0.2)] bg-white rounded-[5px] mb-[5px] p-[5px] flex flex-1 justify-between cursor-pointer hover:shadow-[0_4px_16px_0px_rgba(0,0,0,0.2)];
+  }
+  select {
+    @apply bg-white;
+  }
+}
+
+/* 0 0 0 0.2rem rgb(0 123 255 / 25%) */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* select {
+  box-sizing: content-box;
+  padding-right: 20px;
+ } */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #ebf3fc;
+}
+input[type="file"] {
+  display: none;
+}
+
+.my_bg {
+  background-image: linear-gradient(180.91deg, #2c345b -33.89%, rgba(44, 52, 91, 0.0424345) 184.14%, rgba(44, 52, 91, 0) 206.82%);
+}
+
+ul {
+  list-style: inside;
+  position: 0;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+/* table tr {
+  cursor: pointer;
+}
+table td {
+  padding: 0 !important;
+  font-size: 15px;
+} */
+
+/* a {
+  text-decoration: none;
+} */
+
+.image-input {
+  height: 100px;
+  min-width: 150px;
+  background: #f3f3f3 url("./assets/image.svg") center no-repeat;
+  background-size: 50%;
+  border: 2px solid #eee;
+  margin-top: 10px;
+  cursor: pointer;
+}
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #8f54a0 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+.scroll::-webkit-scrollbar {
+  width: 16px;
+}
+
+.scroll::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: #0560fd;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+} /* Chrome, Edge, and Safari */
+.scroll::-webkit-scrollbar {
+  width: 16px;
+}
+
+.scroll::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: #0560fd;
+  border-radius: 10px;
+  border: 3px solid #ffffff;
+}
