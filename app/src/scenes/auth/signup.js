@@ -24,12 +24,13 @@ export default () => {
         initialValues={{ username: "", organisation: "", password: "" }}
         onSubmit={async (values, actions) => {
           try {
-            const { user, token } = await api.post(`/user/signup`, values);
+            const { user, token, ok, code } = await api.post(`/user/signup`, values);
             if (token) api.setToken(token);
             if (user) dispatch(setUser(user));
+            if (!ok) toast.error(`Wrong login ${code}`);
           } catch (e) {
             console.log("e", e);
-            toast.error("Wrong login", e.code);
+            toast.error(`Wrong login ${e.code}`);
           }
           actions.setSubmitting(false);
         }}>
