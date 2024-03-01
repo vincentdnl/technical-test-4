@@ -35,7 +35,7 @@ const ProjectList = () => {
 
   return (
     <div className="w-full p-2 md:!px-8">
-      <Create onChangeSearch={handleSearch} projects={projects} setProjects={setProjects} />
+      <Create onChangeSearch={handleSearch} setProjects={setProjects} />
       <div className="py-3">
         {activeProjects.map((hit) => {
           return (
@@ -92,7 +92,7 @@ const Budget = ({ project }) => {
   return <ProgressBar percentage={width} max={budget_max_monthly} value={total} />;
 };
 
-const Create = ({ onChangeSearch, projects, setProjects }) => {
+const Create = ({ onChangeSearch, setProjects }) => {
   const [open, setOpen] = useState(false);
 
   return (
