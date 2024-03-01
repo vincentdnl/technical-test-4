@@ -35,7 +35,7 @@ const ProjectList = () => {
 
   return (
     <div className="w-full p-2 md:!px-8">
-      <Create onChangeSearch={handleSearch} />
+      <Create onChangeSearch={handleSearch} projects={projects} setProjects={setProjects} />
       <div className="py-3">
         {activeProjects.map((hit) => {
           return (
@@ -92,7 +92,7 @@ const Budget = ({ project }) => {
   return <ProgressBar percentage={width} max={budget_max_monthly} value={total} />;
 };
 
-const Create = ({ onChangeSearch }) => {
+const Create = ({ onChangeSearch, projects, setProjects }) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -146,6 +146,13 @@ const Create = ({ onChangeSearch }) => {
                   if (!res.ok) throw res;
                   toast.success("Created!");
                   setOpen(false);
+                  setProjects([
+                    ...projects,
+                    {
+                      ...values,
+                      logo: "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
+                    }
+                  ])
                 } catch (e) {
                   console.log(e);
                   toast.error("Some Error!", e.code);
