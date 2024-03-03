@@ -22,9 +22,67 @@ export default () => {
   return (
     <div>
       <div className="appContainer pt-24">
+        <Activity user={user} />
         <Detail user={user} />
       </div>
     </div>
+  );
+};
+
+const Activity = ({ user }) => {
+  const [userActivities, setUserActivities] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const response = await api.get(`/activity?userId=${user._id}`);
+      setUserActivities(response.data);
+    })();
+  }, []);
+
+  const totalCost = userActivities.reduce((total, userActivity) => {
+    return total + userActivity.cost;
+  }, 0);
+
+  return (
+    <div>
+      <h2 className={"mb-2 font-bold"}>
+        Latest activities <i>(total cost: {totalCost}€)</i>
+      </h2>
+      <div className={"flex flex-col space-y-2"}>
+        {userActivities.map((userActivity, i) => {
+          return <ProjectActivity key={`project-activity-${i}`} userActivity={userActivity} />;
+        })}
+        {userActivities.length === 0 && <div>No activity for the moment</div>}
+      </div>
+    </div>
+  );
+};
+
+const ProjectActivity = ({ userActivity }) => {
+  const [project, setProject] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      const response = await api.get(`/project/${userActivity.projectId}`);
+      setProject(response.data);
+    })();
+  }, []);
+
+  const date = new Date(userActivity.date);
+
+  return (
+    project !== null && (
+      <div className={"rounded-md bg-blue-100 px-2 py-1"}>
+        <a href={`/project/${userActivity.projectId}`}>
+          <span>
+            [{date.getFullYear()}/{date.getMonth() + 1}/{date.getDate()}]
+          </span>
+          <span> project: </span>
+          <span className={"font-bold"}>{project.name} </span>
+          <span className={"italic"}>(cost: {userActivity.cost}€)</span>
+        </a>
+      </div>
+    )
   );
 };
 
